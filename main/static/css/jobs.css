@@ -1,0 +1,335 @@
+/* Root Variables */
+:root {
+  --primary-color: #4a6bff;
+  --secondary-color: #f7f9fc;
+  --accent-color: #ff6b6b;
+  --text-color: #333;
+  --light-text: #6c757d;
+  --border-color: #e9ecef;
+  --shadow: 0 .5rem 1rem rgba(0,0,0,.08);
+  --transition: all 0.3s ease;
+}
+
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+}
+
+a:hover {
+  color: #2980b9;
+}
+
+/* Custom CSS for job_listing_area background */
+.job_listing_area {
+  position: relative;
+  padding: 60px 0;
+  background-image: url('static/img/b.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.job_listing_area::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.job_lists {
+  position: relative;
+  z-index: 2;
+}
+
+/* Job Listings */
+.single_jobs {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.single_jobs:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.job-listings-header {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+  padding: 0 15px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0) 100%);
+}
+
+.header-underline {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #2980b9);
+  margin: 0 auto;
+  border-radius: 2px;
+  position: relative;
+}
+
+.header-underline:before, .header-underline:after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background: #3498db;
+  top: 0;
+}
+
+.header-underline:before {
+  left: -10px;
+}
+
+.header-underline:after {
+  right: -10px;
+}
+
+/* Quote Section */
+.quote_section {
+  position: relative;
+  padding: 20px 0;
+  background: linear-gradient(to right, #f9f9ff, #ffffff);
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+  z-index: 1;
+  width: 100%;
+}
+
+.quote_box {
+  text-align: center;
+  padding: 15px;
+}
+
+.quote_text {
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #444;
+  margin-bottom: 10px;
+  position: relative;
+  padding: 0 30px;
+}
+
+.quote_text:before, .quote_text:after {
+  content: '"';
+  font-size: 40px;
+  color: #00D363;
+  opacity: 0.3;
+  position: absolute;
+}
+
+.quote_text:before {
+  left: 0;
+  top: -15px;
+}
+
+.quote_text:after {
+  right: 0;
+  bottom: -30px;
+}
+
+.quote_author {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Thumb/Logo */
+.thumb {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.thumb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Job Content */
+.jobs_left .thumb img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.jobs_content a {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.jobs_content a:hover {
+  color: #3498db;
+}
+
+.jobs_content .company-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #3498db;
+}
+
+.jobs_content .links_locat p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.jobs_right .apply_now .btn {
+  font-size: 0.9rem;
+  padding: 8px 20px;
+}
+
+.jobs_right .date p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Bradcam Area */
+.bradcam_area {
+  background-size: cover;
+  background-position: center;
+  padding: 182px 0 102px 0;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 0;
+}
+
+.bradcam_bg_1 {
+  background-image: url(../img/banner/bradcam.png);
+}
+
+.bradcam_area h3 {
+  font-size: 56px;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 0;
+  text-transform: capitalize;
+}
+
+.bradcam_area p {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.bradcam_area p a {
+  color: #fff;
+}
+
+.bradcam_area p a:hover {
+  color: #fff;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .bradcam_area {
+    padding: 150px 0 60px 0;
+  }
+  
+  .bradcam_area h3 {
+    font-size: 30px;
+  }
+  
+  .jobs_left .thumb img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .jobs_content a {
+    font-size: 1rem;
+  }
+  
+  .jobs_content .company-name {
+    font-size: 0.9rem;
+  }
+  
+  .jobs_content .links_locat p {
+    font-size: 0.8rem;
+  }
+  
+  .jobs_right .apply_now .btn {
+    font-size: 0.8rem;
+    padding: 5px 15px;
+  }
+  
+  .jobs_right .date p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .bradcam_area {
+    padding: 120px 0;
+  }
+}

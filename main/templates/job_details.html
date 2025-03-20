@@ -1,0 +1,391 @@
+{% extends "base.html" %}
+{% block title %}Jobs{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/jobdetails.css' %}">
+
+<!-- bradcam_area  -->
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>{{ job.title }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ bradcam_area  -->
+<style>
+    .job_details_area {
+        position: relative;
+        background-image: url('{% static "/img/detailbg.jpg" %}'); /* Replace with your desired background image */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        margin: 0;
+        overflow: hidden;
+        z-index: 1;
+        padding: 50px 0; /* Add padding for better spacing */
+    }
+
+    .job_details_area::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+        backdrop-filter: blur(10px); /* Blur effect */
+        z-index: -1;
+    }
+
+    .job_details_area .container {
+        position: relative;
+        z-index: 2; /* Ensure content is above the blurred background */
+        background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for content */
+        border-radius: 10px; /* Rounded corners for the container */
+        padding: 30px; /* Add padding inside the container */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    }
+
+    /* Additional styling for job details content */
+    .job_details_header {
+        background: rgba(255, 255, 255, 0.95); /* Slightly opaque white background */
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .descript_wrap, .job_sumary, .application_status_container {
+        background: rgba(255, 255, 255, 0.95); /* Slightly opaque white background */
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .apply_button_container, .job-status-container, .employer_actions, .applicants_container, .login_to_apply {
+        background: rgba(255, 255, 255, 0.95); /* Slightly opaque white background */
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Ensure text is readable on the semi-transparent background */
+    .job_details_area h3, .job_details_area h4, .job_details_area h5, .job_details_area p, .job_details_area ul, .job_details_area li {
+        color: #333; /* Dark text for better readability */
+    }
+
+    /* Add hover effects for interactive elements */
+    .btn-apply, .btn-update-status, .btn-primary, .btn-danger {
+        transition: all 0.3s ease;
+    }
+
+    .btn-apply:hover, .btn-update-status:hover, .btn-primary:hover, .btn-danger:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<div class="job_details_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Job Header with Logo -->
+                <div class="job_details_header mb-4">
+                    <div class="single_jobs white-bg d-flex justify-content-between">
+                        <div class="jobs_left d-flex align-items-center">
+                            <div class="thumb mr-3">
+                                <img src="{{ job.employer.logo.url }}" alt="{{ job.title }}" class="logo">
+                            </div>
+                            <div class="jobs_conetent">
+                                <h4>{{ job.title }}</h4>
+                                <div class="links_locat d-flex align-items-center">
+                                    <div class="location mr-3">
+                                        <p><i class="fa fa-map-marker"></i> {{ job.location }}</p>
+                                    </div>
+                                    <div class="location">
+                                        <p><i class="fa fa-clock-o"></i> {{ job.get_job_type_display }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job Description Section -->
+                <div class="descript_wrap white-bg mb-4">
+                    <div class="single_wrap">
+                        <h4>Job description</h4>
+                        <p>{{ job.description }}</p>
+                    </div>
+                    <div class="single_wrap">
+                        <h4>Responsibility</h4>
+                        <ul>
+                            {{ job.responsibilities|linebreaks }}
+                        </ul>
+                    </div>
+                    <div class="single_wrap">
+                        <h4>Qualifications</h4>
+                        <ul>
+                            {{ job.qualifications|linebreaks }}
+                        </ul>
+                    </div>
+                    <div class="single_wrap">
+                        <h4>Benefits</h4>
+                        <p>{{ job.benefits }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Sidebar -->
+            <div class="col-lg-4">
+                <!-- Job Summary -->
+                <div class="job_sumary mb-4">
+                    <div class="summery_header">
+                        <h3>Job Summary</h3>
+                    </div>
+                    <div class="job_content">
+                        <ul>
+                            <li>Published on: <span>{{ job.published_on }}</span></li>
+                            <li>Vacancy: <span>{{ job.vacancy }} Position</span></li>
+                            <li>Salary: <span>{{ job.salary }} per year</span></li>
+                            <li>Location: <span>{{ job.location }}</span></li>
+                            <li>Job Nature: <span>{{ job.get_job_type_display }}</span></li>
+                            <li>Experience: <span>{{ job.experience }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Application Status/Actions Section -->
+                <div class="application_status_container mb-4">
+                    {% if user.is_authenticated %}
+                        {% if user.employee %}
+                            {% if not job_status %}
+                                <div class="apply_button_container text-center p-4 white-bg">
+                                    <h4 class="mb-3">Ready to Apply?</h4>
+                                    <a href="{% url 'apply_for_job' job.job_id %}" class="btn-apply btn-block">Apply for This Position</a>
+                                </div>
+                            {% else %}
+                                <!-- Enhanced Creative Status Display -->
+                                {% if job_status.status == "Rejected" %}
+                                    <!-- Rejected Status Display -->
+                                    <div class="job-status-container white-bg p-4">
+                                        <h4 class="text-center mb-3">Your Application Status</h4>
+                                        <div class="text-center mb-4">
+                                            <div class="status-circle status-rejected" style="margin: 0 auto; width: 80px; height: 80px;">
+                                                <i class="fa fa-times"></i>
+                                            </div>
+                                            <h5 class="mt-3">Application Status: Rejected</h5>
+                                            <p class="text-muted">Thank you for your interest. Unfortunately, your application was not selected for this position.</p>
+                                            <span class="applicant-status status-rejected">
+                                                Application Rejected
+                                            </span>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="job-status-container white-bg p-4">
+                                        <h4 class="text-center mb-3">Your Application Status</h4>
+                                        <div class="status-timeline">
+                                            <div class="status-step status-completed">
+                                                <div class="status-circle">
+                                                    <i class="fa fa-check"></i>
+                                                </div>
+                                                <div class="status-label">Applied</div>
+                                                <div class="status-description">Application submitted</div>
+                                            </div>
+                                            <div class="status-step {% if job_status.status == 'Shortlisted' or job_status.status == 'Selected' %}status-completed{% elif job_status.status == 'Applied' %}status-active{% endif %}">
+                                                <div class="status-circle">
+                                                    {% if job_status.status == 'Shortlisted' or job_status.status == 'Selected' %}
+                                                        <i class="fa fa-check"></i>
+                                                    {% elif job_status.status == 'Applied' %}<i class="fa fa-hourglass-half"></i>
+                                                    {% else %}
+                                                        <i class="fa fa-circle-o"></i>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="status-label">Shortlisted</div>
+                                                <div class="status-description">Under review</div>
+                                            </div>
+                                            <div class="status-step {% if job_status.status == 'Selected' %}status-completed status-active{% endif %}">
+                                                <div class="status-circle">
+                                                    {% if job_status.status == 'Selected' %}
+                                                        <i class="fa fa-trophy"></i>
+                                                    {% else %}
+                                                        <i class="fa fa-circle-o"></i>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="status-label">Selected</div>
+                                                <div class="status-description">Offer extended</div>
+                                            </div>
+                                        </div>
+                                        <!-- Current Status Badge -->
+                                        <div class="text-center mt-4">
+                                            <span class="applicant-status status-{{ job_status.status|lower }}">
+                                                Current Status: {{ job_status.status }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% elif user.employer %}
+                            <div class="employer_actions white-bg p-4 mb-4">
+                                <h4 class="text-center mb-3">Employer Actions</h4>
+                                <div class="d-flex justify-content-around">
+                                    <a href="{% url 'edit_job' job.job_id %}" class="btn btn-primary">Edit Job</a>
+                                    <a href="{% url 'delete_job' job.job_id %}" class="btn btn-danger">Delete Job</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Redesigned Applicants List with Color Coding -->
+                            <div class="applicants_container white-bg p-4 mb-4">
+                                <h3 class="text-center mb-4">
+                                    <i class="fa fa-users mr-2"></i>Applicants
+                                </h3>
+                                {% if job_statuses %}
+                                    <div class="applicant-list">
+                                        {% for status in job_statuses %}
+                                            <div class="applicant-card mb-4 rounded shadow-sm status-card-{{ status.status|lower }}">
+                                                <!-- Status Indicator Bar -->
+                                                <div class="status-indicator-bar"></div>
+                                                
+                                                <!-- Applicant Content -->
+                                                <div class="p-3">
+                                                    <!-- Applicant Header -->
+                                                    <div class="applicant-header d-flex align-items-center mb-3">
+                                                        <div class="applicant-avatar mr-3">
+                                                            <i class="fa fa-user-circle-o" style="font-size: 2rem;"></i>
+                                                        </div>
+                                                        <div class="applicant-details">
+                                                            <h5 class="applicant-name mb-1">{{ status.employee.wo_name }}</h5>
+                                                            <div class="status-badge status-badge-{{ status.status|lower }}">
+                                                                {% if status.status == 'Applied' %}
+                                                                    <i class="fa fa-file-text-o mr-1"></i>
+                                                                {% elif status.status == 'Shortlisted' %}
+                                                                    <i class="fa fa-check-circle-o mr-1"></i>
+                                                                {% elif status.status == 'Selected' %}
+                                                                    <i class="fa fa-trophy mr-1"></i>
+                                                                {% elif status.status == 'Rejected' %}
+                                                                    <i class="fa fa-times-circle-o mr-1"></i>
+                                                                {% endif %}
+                                                                {{ status.status }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Update Status Button -->
+                                                    <a href="{% url 'update_job_status' job.job_id status.employee.wo_id %}" 
+                                                       class="btn-update-status btn-block text-center mt-2">
+                                                        <i class="fa fa-refresh mr-1"></i> Update Status
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    <div class="no-applicants text-center p-5 bg-light rounded">
+                                        <i class="fa fa-user-o mb-3" style="font-size: 3rem; opacity: 0.5;"></i>
+                                        <h5>No Applicants Yet</h5>
+                                        <p class="text-muted mb-0">Applications will appear here when candidates apply</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="login_to_apply white-bg p-4 text-center">
+                            <h4 class="mb-3">Interested in this position?</h4>
+                            <p>You need to log in first to apply for this job.</p>
+                            <a href="{% url 'user_login' %}" class="btn btn-primary btn-block">Login to Apply</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add CSS for color coding -->
+<style>
+    /* Applicant Card Styling */
+    .applicant-card {
+        border: 1px solid #e0e0e0;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    .applicant-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* Status Indicator Bar */
+    .status-indicator-bar {
+        height: 6px;
+        width: 100%;
+    }
+    
+    /* Status-specific Colors */
+    .status-card-applied .status-indicator-bar {
+        background-color: #3498db; /* Blue */
+    }
+    .status-card-shortlisted .status-indicator-bar {
+        background-color: #f39c12; /* Orange */
+    }
+    .status-card-selected .status-indicator-bar {
+        background-color: #2ecc71; /* Green */
+    }
+    .status-card-rejected .status-indicator-bar {
+        background-color: #e74c3c; /* Red */
+    }
+    
+    /* Status Badge Styling */
+    .status-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    .status-badge-applied {
+        background-color: rgba(52, 152, 219, 0.15);
+        color: #3498db;
+    }
+    .status-badge-shortlisted {
+        background-color: rgba(243, 156, 18, 0.15);
+        color: #f39c12;
+    }
+    .status-badge-selected {
+        background-color: rgba(46, 204, 113, 0.15);
+        color: #2ecc71;
+    }
+    .status-badge-rejected {
+        background-color: rgba(231, 76, 60, 0.15);
+        color: #e74c3c;
+    }
+    
+    /* Update Status Button Styling */
+    .btn-update-status {
+        display: block;
+        padding: 8px 16px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        color: #495057;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    .btn-update-status:hover {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+    
+    /* No Applicants Styling */
+    .no-applicants {
+        border: 2px dashed #dee2e6;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% block title %}JobConnect Resume Builder{% endblock %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobSphere Resume Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+</head>
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <h3>JobSphere Resume Builder</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<body>
+
+    <form action="{% url 'resume' %}" method="post" class="form-container">
+        {% csrf_token %}
+
+        <h2 class="section-title">Personal Information</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g. John Doe">
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" placeholder="e.g. 28">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="about">Professional Title</label>
+            <input type="text" id="about" name="about" placeholder="e.g. Senior Software Developer">
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="e.g. john.doe@example.com">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="e.g. 9876543210">
+            </div>
+        </div>
+
+        <h2 class="section-title">Skills</h2>
+        <div class="form-group">
+            <label for="skills">Top 5 Skills</label>
+            <div class="skills-container">
+                <input type="text" id="skills1" name="skill1" placeholder="e.g. Java Programming">
+                <input type="text" id="skills2" name="skill2" placeholder="e.g. Project Management">
+                <input type="text" id="skills3" name="skill3" placeholder="e.g. Data Analysis">
+                <input type="text" id="skills4" name="skill4" placeholder="e.g. UI/UX Design">
+                <input type="text" id="skills5" name="skill5" placeholder="e.g. Team Leadership">
+            </div>
+        </div>
+
+        <h2 class="section-title">Education</h2>
+        
+        <div class="education-container">
+            <h3>Education 1</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="degree1">Degree</label>
+                    <input type="text" id="degree1" name="degree1" placeholder="e.g. Bachelor of Technology">
+                </div>
+                <div class="form-group">
+                    <label for="college1">College/University</label>
+                    <input type="text" id="college1" name="college1" placeholder="e.g. MIT">
+                </div>
+                <div class="form-group">
+                    <label for="year1">Year</label>
+                    <input type="text" id="year1" name="year1" placeholder="e.g. 2018-2022">
+                </div>
+            </div>
+        </div>
+        
+        <div class="education-container">
+            <h3>Education 2</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="degree2">Degree</label>
+                    <input type="text" id="degree2" name="degree2" placeholder="e.g. Master of Science">
+                </div>
+                <div class="form-group">
+                    <label for="college2">College/University</label>
+                    <input type="text" id="college2" name="college2" placeholder="e.g. Stanford University">
+                </div>
+                <div class="form-group">
+                    <label for="year2">Year</label>
+                    <input type="text" id="year2" name="year2" placeholder="e.g. 2022-2024">
+                </div>
+            </div>
+        </div>
+        
+        <div class="education-container">
+            <h3>Education 3</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="degree3">Degree</label>
+                    <input type="text" id="degree3" name="degree3" placeholder="e.g. PhD">
+                </div>
+                <div class="form-group">
+                    <label for="college3">College/University</label>
+                    <input type="text" id="college3" name="college3" placeholder="e.g. Harvard University">
+                </div>
+                <div class="form-group">
+                    <label for="year3">Year</label>
+                    <input type="text" id="year3" name="year3" placeholder="e.g. 2024-Present">
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Languages</h2>
+        <div class="form-group">
+            <label for="languages">Languages You Speak</label>
+            <div class="languages-container">
+                <input type="text" id="lang1" name="lang1" placeholder="e.g. English (Native)">
+                <input type="text" id="lang2" name="lang2" placeholder="e.g. Spanish (Fluent)">
+                <input type="text" id="lang3" name="lang3" placeholder="e.g. French (Basic)">
+            </div>
+        </div>
+
+        <h2 class="section-title">Projects</h2>
+        
+        <div class="project-container">
+            <h3>Project 1</h3>
+            <div class="form-group">
+                <label for="project1">Project Title</label>
+                <input type="text" id="project1" name="project1" placeholder="e.g. E-Commerce Platform">
+            </div>
+            <div class="form-group">
+                <label for="durat1">Duration</label>
+                <input type="text" id="durat1" name="durat1" placeholder="e.g. Jan 2023 - Jun 2023">
+            </div>
+            <div class="form-group">
+                <label for="desc1">Description</label>
+                <textarea id="desc1" name="desc1" placeholder="Describe your key responsibilities and achievements in this project"></textarea>
+            </div>
+        </div>
+        
+        <div class="project-container">
+            <h3>Project 2</h3>
+            <div class="form-group">
+                <label for="project2">Project Title</label>
+                <input type="text" id="project2" name="project2" placeholder="e.g. Mobile Banking App">
+            </div>
+            <div class="form-group">
+                <label for="durat2">Duration</label>
+                <input type="text" id="durat2" name="durat2" placeholder="e.g. Jul 2023 - Dec 2023">
+            </div>
+            <div class="form-group">
+                <label for="desc2">Description</label>
+                <textarea id="desc2" name="desc2" placeholder="Describe your key responsibilities and achievements in this project"></textarea>
+            </div>
+        </div>
+
+        <h2 class="section-title">Work Experience</h2>
+        
+        <div class="experience-container">
+            <h3>Experience 1</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="company1">Company Name</label>
+                    <input type="text" id="company1" name="company1" placeholder="e.g. Google">
+                </div>
+                <div class="form-group">
+                    <label for="post1">Position</label>
+                    <input type="text" id="post1" name="post1" placeholder="e.g. Senior Developer">
+                </div>
+                <div class="form-group">
+                    <label for="duration1">Duration</label>
+                    <input type="text" id="duration1" name="duration1" placeholder="e.g. 2020-2023">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lin11">Description</label>
+                <textarea id="lin11" name="lin11" placeholder="Describe your key responsibilities and achievements"></textarea>
+            </div>
+        </div>
+        
+        <div class="experience-container">
+            <h3>Experience 2</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="company2">Company Name</label>
+                    <input type="text" id="company2" name="company2" placeholder="e.g. Microsoft">
+                </div>
+                <div class="form-group">
+                    <label for="post2">Position</label>
+                    <input type="text" id="post2" name="post2" placeholder="e.g. Software Engineer">
+                </div>
+                <div class="form-group">
+                    <label for="duration2">Duration</label>
+                    <input type="text" id="duration2" name="duration2" placeholder="e.g. 2018-2020">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lin21">Description</label>
+                <textarea id="lin21" name="lin21" placeholder="Describe your key responsibilities and achievements"></textarea>
+            </div>
+        </div>
+
+        <h2 class="section-title">Achievements</h2>
+        <div class="form-group">
+            <label for="ach1">Achievement 1</label>
+            <input type="text" id="ach1" name="ach1" placeholder="e.g. Won Best Innovator Award 2023">
+        </div>
+        <div class="form-group">
+            <label for="ach2">Achievement 2</label>
+            <input type="text" id="ach2" name="ach2" placeholder="e.g. Published 3 research papers in top journals">
+        </div>
+        <div class="form-group">
+            <label for="ach3">Achievement 3</label>
+            <input type="text" id="ach3" name="ach3" placeholder="e.g. Led team to 40% productivity improvement">
+        </div>
+
+        <button type="submit" class="submit-btn">Create My Resume</button>
+    </form>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .page-header {
+            background: linear-gradient(to right, #00b7ff, #007bff);
+            padding: 30px 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: 600;
+        }
+
+        .form-container {
+            width: 80%;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            background: linear-gradient(to right, #f5f7fa, #e9ecef);
+            color: #2d3b55;
+            padding: 15px 20px;
+            margin: 30px 0 20px;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: 600;
+            border-left: 4px solid #007bff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #2d3b55;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .skills-container, .languages-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skills-container input, .languages-container input {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .project-container, .education-container, .experience-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            border-left: 3px solid #007bff;
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, #00b7ff, #007bff);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 123, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+{% endblock %}
+</body>
+</html>

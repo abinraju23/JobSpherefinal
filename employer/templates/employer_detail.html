@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}{{ employer.name }} - Employer Profile{% endblock %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/employeedetail.css' %}">
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>{{ employer.name }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="employer_details_area" style="padding: 10;">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Employer Profile Card -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body text-center p-4">
+                        <div class="employer_logo mb-4">
+                            <img src="{{ employer.logo.url }}" alt="{{ employer.name }} Logo" class="img-fluid rounded-circle" style="max-width: 150px; height: 150px; object-fit: cover;">
+                        </div>
+                        <h3 class="card-title mb-2">{{ employer.name }}</h3>
+                        <p class="card-text text-muted">
+                            <i class="fa fa-map-marker-alt mr-2"></i>{{ employer.location }}
+                        </p>
+                        <a href="{{ employer.website }}" target="_blank" class="btn btn-outline-primary btn-block mt-3">
+                            <i class="fa fa-globe mr-2"></i>Visit Website
+                        </a>
+                        
+                        {% if request.user == employer.user %}
+                        <div class="employer_actions mt-4">
+                            <a href="{% url 'edit_employer' employer.id %}" class="btn btn-warning btn-block mb-2">
+                                <i class="fa fa-edit mr-2"></i>Edit Profile
+                            </a>
+                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteEmployerModal">
+                                <i class="fa fa-trash mr-2"></i>Delete Profile
+                            </button>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Employer Details -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-4">About {{ employer.name }}</h4>
+                        <div class="employer_description mb-4">
+                            <p>{{ employer.description|linebreaks }}</p>
+                        </div>
+                        <p>Email :{{ employer.email }}</p>
+                        
+                        <!-- Jobs Posted Section -->
+                        <div class="jobs_posted mt-5">
+                            <div class="section_title">
+                                <h4>Jobs Posted</h4>
+                            </div>
+                            
+                            {% if employer_jobs %}
+                                <div class="job_listings">
+                                    {% for job in employer_jobs %}
+                                    <div class="single_jobs shadow-sm mb-3 p-3 rounded">
+                                        <div class="jobs_left">
+                                            <div class="jobs_conetent">
+                                                <a href="{% url 'job_details' job_id=job.job_id %}"><h4>{{ job.title }}</h4></a>
+                                                <div class="links_locat d-flex align-items-center" style="gap: 15px;">
+                                                    <div class="location">
+                                                        <p><i class="fa fa-map-marker-alt"></i> {{ job.location }}</p>
+                                                    </div>
+                                                    <div class="location">
+                                                        <p><i class="fa fa-clock"></i> {{ job.job_type }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jobs_right">
+                                            <div class="apply_now">
+                                                <a href="{% url 'job_details' job_id=job.job_id %}" class="btn btn-sm btn-primary">View Details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="alert alert-info">
+                                    No jobs posted yet.
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+{% if request.user == employer.user %}
+<div class="modal fade" id="deleteEmployerModal" tabindex="-1" role="dialog" aria-labelledby="deleteEmployerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteEmployerModalLabel">Confirm Deletion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete your employer profile? This action cannot be undone.</p>
+                <p class="text-danger"><strong>Warning:</strong> All your posted jobs will also be deleted.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form action="{% url 'delete_employer' employer.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Add jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

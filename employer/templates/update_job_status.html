@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .employee-details {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+
+    .employee-details h4 {
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    .employee-details p {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .employee-details p strong {
+        color: #555;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>Update Job Status for {{ employee.wo_name }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<br><br><br>
+
+<div class="container">
+    <!-- Employee Details Section -->
+    <div class="employee-details">
+        <h4>Employee Details</h4>
+        <p><strong>Name:</strong> {{ employee.wo_name }}</p>
+        <p><strong>Position:</strong> {{ employee.wo_position }}</p>
+        <p><strong>Email:</strong> {{ employee.wo_email }}</p>
+        <p><strong>Phone:</strong> {{ employee.wo_phone }}</p>
+        <p><strong>Gender:</strong> {{ employee.wo_gender }}</p>
+        <p><strong>Date of Birth:</strong> {{ employee.wo_dob }}</p>
+        <p><strong>Address:</strong> {{ employee.wo_address }}</p>
+        <p><strong>Resume:</strong> <a href="{{ employee.wo_resume.url }}" target="_blank">View Resume</a></p>
+    </div>
+
+    <!-- Update Status Form -->
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="status">Update Status:</label>
+            <select name="status" id="status" class="form-control">
+                <option value="Applied" {% if job_status.status == 'Applied' %}selected{% endif %}>Applied</option>
+                <option value="Shortlisted" {% if job_status.status == 'Shortlisted' %}selected{% endif %}>Shortlisted</option>
+                <option value="Rejected" {% if job_status.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+                <option value="Selected" {% if job_status.status == 'Selected' %}selected{% endif %}>Selected</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Status</button>
+    </form>
+</div>
+<br><br>
+{% endblock %}

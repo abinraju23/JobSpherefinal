@@ -1,0 +1,387 @@
+/* Main Colors */
+:root {
+    --primary-color: #4a6bff;
+    --secondary-color: #f7f9fc;
+    --accent-color: #ff6b6b;
+    --text-color: #333;
+    --light-text: #6c757d;
+    --border-color: #e9ecef;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --shadow: 0 .5rem 1rem rgba(0,0,0,.08);
+    --transition: all 0.3s ease;
+  }
+  
+  /* Global Styles */
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background-color: #f8f9fa;
+    line-height: 1.6;
+  }
+  .employer_details_area {
+    position: relative;
+    padding: 50px 0; /* Adjust padding as needed */
+    z-index: 1;
+    width: 100%; /* Ensure full width */
+    margin: 10; /* Remove default margin */
+}
+
+.employer_details_area::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/static/img/bg.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+     /* Reduced blur for better readability */
+    opacity: 0.5;  /* Slightly increased opacity */
+    z-index: -1;
+    transition: all 0.5s ease;
+    width: 100%; /* Ensure full width */
+}
+
+/* Modal backdrop fix */
+.modal-backdrop {
+    z-index: 1040;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+  a {
+    color: var(--primary-color);
+    transition: var(--transition);
+  }
+  
+  a:hover {
+    color: #3451d1;
+    text-decoration: none;
+  }
+  
+  /* Header Banner */
+  .bradcam_area {
+    background-size: cover !important;
+    background-position: center center !important;
+    padding: 120px 0;
+    position: relative;
+    z-index: 0;
+  }
+  
+  .bradcam_bg_1 {
+    background: linear-gradient(135deg, rgba(74, 107, 255, 0.9), rgba(87, 97, 237, 0.8)), url('/static/img/banner/bradcam.jpg');
+  }
+  
+  .bradcam_bg_1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: -1;
+  }
+  
+  .bradcam_text h3 {
+    color: #fff;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  /* Employee Details Area */
+  .employee_details_area {
+    padding: 50px 0;
+  }
+  
+  /* Cards Styling */
+  .card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+    border: none;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.1);
+  }
+  
+  .card-body {
+    padding: 30px;
+  }
+  
+  .card-title {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .card-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+  }
+  
+  .text-center .card-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Profile Card */
+  .card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .card-text {
+    margin-bottom: 10px;
+  }
+  
+  .card-text i {
+    color: var(--primary-color);
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+  }
+  
+  /* Contact Information Section */
+  .contact_info .single_info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .contact_info .single_info span {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px;
+  }
+  
+  .contact_info .single_info span i {
+    color: var(--primary-color);
+    width: 20px;
+    text-align: center;
+  }
+  
+  .contact_info .single_info p {
+    margin-bottom: 0;
+    color: var(--light-text);
+  }
+  
+  /* Employee Details Section */
+  .employee_details .single_detail h6 {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .employee_details .single_detail p {
+    margin-bottom: 0;
+    color: var(--light-text);
+  }
+  
+  /* Biography Section */
+  .employee_details .mt-4 h6 {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 10px;
+  }
+  
+  .employee_details .mt-4 p {
+    color: var(--light-text);
+    text-align: justify;
+  }
+  
+  /* Applied Jobs Section */
+  .section_title h4 {
+    font-weight: 600;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .section_title h4::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+  }
+  
+  .single_jobs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+  }
+  
+  .single_jobs:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+    border-left: 3px solid var(--primary-color);
+  }
+  
+  .jobs_left .jobs_conetent h4 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  
+  .links_locat p {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: var(--light-text);
+  }
+  
+  .links_locat p i {
+    color: var(--primary-color);
+    margin-right: 5px;
+  }
+  
+  /* Buttons Styling */
+  .btn {
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 6px;
+    transition: var(--transition);
+  }
+  
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .btn-primary:hover {
+    background-color: #3451d1;
+    border-color: #3451d1;
+    transform: translateY(-2px);
+  }
+  
+  .btn-warning {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+    color: #212529;
+  }
+  
+  .btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+    color: #212529;
+    transform: translateY(-2px);
+  }
+  
+  .btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+    transform: translateY(-2px);
+  }
+  
+  .btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  
+  /* Modal Styling */
+  .modal-content {
+    border-radius: 12px;
+    border: none;
+    overflow: hidden;
+  }
+  
+  .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .modal-title {
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  
+  .modal-footer {
+    border-top: 1px solid var(--border-color);
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 992px) {
+    .bradcam_text h3 {
+      font-size: 36px;
+    }
+    
+    .card-body {
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .bradcam_text h3 {
+      font-size: 30px;
+    }
+    
+    .bradcam_area {
+      padding: 80px 0;
+    }
+    
+    .single_jobs {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .jobs_right {
+      width: 100%;
+      margin-top: 15px;
+    }
+    
+    .apply_now {
+      text-align: left;
+    }
+  }
+  
+  /* Animation Classes */
+  .fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Empty State Styling */
+  .alert-info {
+    background-color: rgba(74, 107, 255, 0.1);
+    border-color: rgba(74, 107, 255, 0.2);
+    color: var(--primary-color);
+    border-radius: 8px;
+    padding: 20px;
+  }

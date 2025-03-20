@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{%load static%}
+{% block title %}Create Jobs{% endblock %}
+{% block content %}
+
+<style>
+    .create-job-section {
+        position: relative;
+        padding: 50px 0;
+        z-index: 1;
+    }
+    
+    .create-job-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('{% static 'img/postjob.jpg' %}');
+        background-size: cover;
+        background-position: center;
+        filter: blur(2px);  /* Reduced from 5px to 2px */
+        opacity: 0.3;  /* Slightly increased from 0.25 to 0.3 for better visibility */
+        z-index: -1;
+        transition: all 0.5s ease;
+    }
+    
+    .job-form-container {
+        background-color: rgba(255, 255, 255, 0.8);  /* Slightly reduced opacity for better contrast */
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s ease;
+    }
+    
+    .job-form-container:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .bradcam_area {
+        background-image: linear-gradient(to right, #2D3092, #4B5FFC) !important;
+    }
+    
+    .bradcam_text h3 {
+        font-size: 48px;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-primary {
+        background: linear-gradient(45deg, #2D3092, #4B5FFC);
+        border: none;
+        padding: 10px 25px;
+        font-weight: 600;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background: linear-gradient(45deg, #4B5FFC, #2D3092);
+        transform: translateY(-2px);
+    }
+</style>
+
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>Ready to Hire</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="create-job-section">
+    <div class="container">
+        <div class="job-form-container">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Create Job</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

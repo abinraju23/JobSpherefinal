@@ -1,0 +1,305 @@
+.thumb {
+    width: 10vw;
+    height: 10vw;
+    max-width: 100px;
+    max-height: 100px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Applicant list styles */
+.applicant-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.applicant-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.applicant-item:hover {
+    background-color: #f1f1f1;
+}
+
+.applicant-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.applicant-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Content Card */
+.content-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+/* Job Status Container */
+.job-status-container {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.job-status-container h4 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
+}
+
+/* Status Timeline */
+.status-timeline {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.status-timeline:before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #e9ecef;
+    z-index: 1;
+}
+
+.status-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    width: 33.33%; /* Changed from 25% to 33.33% for 3 steps instead of 4 */
+}
+
+.status-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.status-label {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #6c757d;
+    transition: all 0.3s ease;
+}
+
+.status-description {
+    font-size: 12px;
+    text-align: center;
+    color: #adb5bd;
+    margin-top: 5px;
+    max-width: 120px;
+}
+
+/* Active Status Styles */
+.status-active .status-circle {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(37, 117, 252, 0.4);
+}
+
+.status-active .status-label {
+    color: #2575fc;
+    font-weight: 700;
+}
+
+/* Completed Status */
+.status-completed .status-circle {
+    background: #28a745;
+}
+
+/* Status-specific Styles */
+.status-applied .status-circle { 
+    background: #3498db; 
+}
+
+.status-shortlisted .status-circle { 
+    background: #f39c12; 
+}
+
+.status-rejected .status-circle { 
+    background: #e74c3c; 
+}
+
+.status-selected .status-circle { 
+    background: #2ecc71; 
+}
+
+/* Applicant Status */
+.applicant-status {
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.status-applied {
+    background-color: rgba(52, 152, 219, 0.15);
+    color: #3498db;
+    border: 1px solid #3498db;
+}
+
+.status-shortlisted {
+    background-color: rgba(243, 156, 18, 0.15);
+    color: #f39c12;
+    border: 1px solid #f39c12;
+}
+
+.status-rejected {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+}
+
+.status-selected {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+
+/* Current Status Badge - For backward compatibility */
+.current-status-badge {
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.status-applied-badge {
+    background-color: rgba(52, 152, 219, 0.15);
+    color: #3498db;
+    border: 1px solid #3498db;
+}
+
+.status-shortlisted-badge {
+    background-color: rgba(243, 156, 18, 0.15);
+    color: #f39c12;
+    border: 1px solid #f39c12;
+}
+
+.status-rejected-badge {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+}
+
+.status-selected-badge {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+
+/* Update Status button */
+.btn-update-status {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-update-status:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.btn-update-status:active {
+    transform: translateY(0);
+}
+
+/* Apply Button */
+.btn-apply {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    max-width: 250px;
+}
+
+.btn-apply:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+/* No applicants message */
+.no-applicants {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .status-timeline {
+        flex-wrap: wrap;
+    }
+    
+    .status-step {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+}

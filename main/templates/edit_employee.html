@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Employee Edit{% endblock %}
+
+{% block content %}
+
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>{{ employee.wo_name }} Edit</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+    <div class="container mt-5">
+        <h2>Employee Details</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="{% url 'employee_list' %}">Cancel</a>
+        </form>
+    </div>
+    <br><br><br><br>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Jobs{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+<style>
+
+</style>
+
+
+<!-- bradcam_area with enhanced text shadow and added margin-top -->
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text" style="text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                    <h3>Discover Exciting Job Opportunities!</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ bradcam_area  -->
+
+<!-- Inspirational Quote Section with Background Image -->
+<div class="quote_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="quote_box">
+                    <p class="quote_text" id="inspirational_quote">Loading quote...</p>
+                    <p class="quote_author" id="quote_author"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ Inspirational Quote Section -->
+
+<!-- job_listing_area_start with Background Image -->
+<div class="job_listing_area">
+    <div class="container">
+        <div class="row align-items-center mb-4">
+            <div class="col-lg-12">
+                <div class="section-title position-relative">
+                    <h3 class="job-listings-header">All Job Listings</h3>
+                    <div class="header-underline"></div>
+                </div>
+            </div>
+        </div>
+        <div class="job_lists m-0">
+            <div class="row">
+            {% for job in jobs %}
+                <div class="col-lg-12 col-md-12">
+                    <div class="single_jobs white-bg d-flex justify-content-between">
+                        <div class="jobs_left d-flex align-items-center">
+                            <div class="thumb">
+                                <img src="{{ job.employer.logo.url }}" alt="{{ job.title }}" class="logo">
+                            </div>
+                            <div class="jobs_conetent">
+                                <a href="{% url 'job_details' job_id=job.job_id %}">{{ job.title }}</a>
+                                <div class="links_locat d-flex align-items-center">
+                                    <div class="location">
+                                        <p> <i class="fa fa-map-marker"></i> {{ job.location }}</p>
+                                    </div>
+                                    <div class="location">
+                                        <p> <i class="fa fa-clock-o"></i> {{ job.get_job_type_display }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jobs_right">
+                            <div class="apply_now">
+                                <a href="{% url 'job_details' job_id=job.job_id %}" class="boxed-btn3">Apply Now</a>
+                            </div>
+                            <div class="date">
+                                <p>Date line: {{ job.published_on }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- job_listing_area_end -->
+
+<!-- Make sure jQuery is loaded first -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    // Wait for document to be fully loaded
+    $(document).ready(function() {
+        // Inspirational quotes rotation
+        const quotes = [
+            {text: "The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle.", author: "- Steve Jobs"},
+            {text: "Choose a job you love, and you will never have to work a day in your life.", author: "- Confucius"},
+            {text: "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work.", author: "- Steve Jobs"},
+            {text: "The future depends on what you do today.", author: "- Mahatma Gandhi"},
+            {text: "Opportunities don't happen. You create them.", author: "- Chris Grosser"},
+            {text: "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.", author: "- Albert Schweitzer"}
+        ];
+        function setRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            $("#inspirational_quote").text(quotes[randomIndex].text);
+            $("#quote_author").text(quotes[randomIndex].author);
+        }
+        setRandomQuote();
+        setInterval(setRandomQuote, 5000);
+    });
+</script>
+{% endblock %}

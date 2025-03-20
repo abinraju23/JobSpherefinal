@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Create Jobs{% endblock %}
+
+{% block content %}
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>Delete Jobs</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<br><br><br><br>
+    <div class="container">
+        <p>Are you sure you want to delete "{{ job.title }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="{% url 'browse_jobs' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+<br><br><br><br>
+{% endblock %}

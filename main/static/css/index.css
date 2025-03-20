@@ -1,0 +1,383 @@
+/* Custom CSS for job_listing_area background */
+.job_listing_area {
+  position: relative;
+  padding: 60px 0; /* Adjust padding as needed */
+  background-image: url('/static/img/bg3.jpg'); /* Correct path to your local image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  overflow: hidden; /* Ensure the blur effect doesn't overflow */
+}
+
+.job_listing_area::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8); /* Light overlay for better readability */
+  backdrop-filter: blur(2px); /* Subtle blur effect for smoother background */
+  z-index: -1;
+}
+
+.job_lists {
+  position: relative;
+  z-index: 2;
+}
+
+/* Custom Hover Effect for Cards */
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Underline Effect for Headers */
+.title_bg {
+  transition: width 0.3s ease;
+}
+
+.section_title:hover .title_bg {
+  width: 140px; /* Expand the underline on hover */
+}
+
+/* Ensure job listings have sufficient contrast */
+.single_jobs {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  border-radius: 10px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-bottom: 20px; /* Spacing between job listings */
+  padding: 20px; /* Padding inside each job listing */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.single_jobs:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Custom CSS for top_companies_area background */
+.top_companies_area {
+  position: relative;
+  padding: 60px 0; /* Adjust padding as needed */
+  background-image: url('/static/img/tcbg.jpg'); /* Correct path to your local image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  overflow: hidden; /* Ensure the blur effect doesn't overflow */
+}
+
+.top_companies_area::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8); /* Light overlay for better readability */
+  backdrop-filter: blur(2px); /* Subtle blur effect for smoother background */
+  z-index: -1;
+}
+
+.single_company {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  border-radius: 10px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 20px; /* Padding inside each company card */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.single_company:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Elegant Blue & White Theme */
+:root {
+  --primary-blue: #2c5282;
+  --secondary-blue: #4299e1;
+  --light-blue: #ebf8ff;
+  --white: #ffffff;
+  --off-white: #f7fafc;
+  --light-gray: #e2e8f0;
+  --text-dark: #2d3748;
+  --text-medium: #4a5568;
+  --text-light: #718096;
+  --shadow-subtle: 0 4px 6px rgba(44, 82, 130, 0.05);
+  --shadow-medium: 0 10px 15px rgba(44, 82, 130, 0.1);
+}
+
+/* Job Listings Section */
+.job_listing_area .section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.job_listing_area .section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.job_listing_area .section-header h2:after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background: var(--secondary-blue);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.job_listing_area .section-header p {
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.jobs_left .thumb {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(44, 82, 130, 0.1);
+  border: 2px solid var(--light-gray);
+  background-color: var(--white);
+}
+
+.jobs_left .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+}
+
+.jobs_content {
+  padding-left: 20px;
+}
+
+.jobs_content a.job_title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.jobs_content a.job_title:hover {
+  color: var(--accent-blue);
+}
+
+.jobs_content .company-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--secondary-blue);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.jobs_content .links_locat {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.jobs_content .links_locat p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.jobs_content .links_locat p i {
+  margin-right: 8px;
+  color: var(--accent-blue);
+}
+
+.jobs_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.jobs_right .apply_now .btn {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid var(--primary-blue);
+}
+
+.jobs_right .apply_now .btn:hover {
+  background-color: var(--white);
+  color: var(--primary-blue);
+}
+
+.jobs_right .date {
+  margin-top: 10px;
+}
+
+.jobs_right .date p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+/* Top Companies Section */
+.top_companies_area .section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.top_companies_area .section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.top_companies_area .section-header h2:after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 3px;
+  background: var(--secondary-blue);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.top_companies_area .section-header p {
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.company_logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--off-white);
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid var(--light-gray);
+  box-shadow: 0 5px 15px rgba(44, 82, 130, 0.08);
+}
+
+.company_logo img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.company_info {
+  margin-top: 15px;
+}
+
+.company_name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.company_name:hover {
+  color: var(--accent-blue);
+}
+
+.company_location {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company_location i {
+  margin-right: 5px;
+  color: var(--accent-blue);
+}
+
+.open_positions {
+  display: inline-block;
+  padding: 5px 15px;
+  background-color: var(--light-blue);
+  color: var(--primary-blue);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+  .job_listing_area, .top_companies_area {
+    padding: 60px 0;
+  }
+  
+  .single_jobs {
+    margin-bottom: 20px;
+  }
+  
+  .top_companies_area .section-header h2,
+  .job_listing_area .section-header h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .jobs_right {
+    margin-top: 15px;
+    align-items: flex-start;
+  }
+  
+  .single_company {
+    padding: 25px 15px;
+  }
+  
+  .company_logo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .top_companies_area .section-header h2,
+  .job_listing_area .section-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .top_companies_area .section-header p,
+  .job_listing_area .section-header p {
+    font-size: 1rem;
+  }
+}
